@@ -50,12 +50,12 @@ namespace MilkSpun.RTSDriver.Main
         {
             _velocity.y = DownSpeed;
 
-            if (_world.CheckPositionInWorld(TopLeftPos.x, TopLeftPos.y + DownSpeed, TopLeftPos.z) ||
-                _world.CheckPositionInWorld(TopRightPos.x, TopRightPos.y + DownSpeed,
+            if (_world.CheckPositionOnGround(TopLeftPos.x, TopLeftPos.y + DownSpeed, TopLeftPos.z) ||
+                _world.CheckPositionOnGround(TopRightPos.x, TopRightPos.y + DownSpeed,
                     TopRightPos.z) ||
-                _world.CheckPositionInWorld(BottomLeftPos.x, BottomLeftPos.y + DownSpeed,
+                _world.CheckPositionOnGround(BottomLeftPos.x, BottomLeftPos.y + DownSpeed,
                     BottomLeftPos.z) ||
-                _world.CheckPositionInWorld(BottomRightPos.x, BottomRightPos.y + DownSpeed,
+                _world.CheckPositionOnGround(BottomRightPos.x, BottomRightPos.y + DownSpeed,
                     BottomRightPos.z))
             {
                 _velocity.y = 0;
