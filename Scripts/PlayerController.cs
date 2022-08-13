@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using MilkSpun.Common;
 using MilkSpun.Common.MilkSpun.Scripts.Common;
+using UnityEditor.Animations;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
 namespace MilkSpun.RTSDriver.Main
@@ -20,7 +22,7 @@ namespace MilkSpun.RTSDriver.Main
         {
             get => _animator.GetBool(IsJump1);
             set => _animator.SetBool(IsJump1, value);
-        }
+         }
 
         public bool IsMoving
         {
@@ -29,16 +31,16 @@ namespace MilkSpun.RTSDriver.Main
         }
 
         public bool IsGround => _world.CheckPositionOnGround(transform.position.x - 0.5f,
-                                    transform.position.y - 0.1f, transform.position.z - 0.5f) ||
-                                _world.CheckPositionOnGround
-                                (transform.position.x - 0.5f,
-                                    transform.position.y - 0.1f, transform.position.z + 0.5f) ||
-                                _world.CheckPositionOnGround
-                                (transform.position.x + 0.5f,
-                                    transform.position.y - 0.1f, transform.position.z + 0.5f) ||
-                                _world.CheckPositionOnGround
-                                (transform.position.x + 0.5f,
-                                    transform.position.y - 0.1f, transform.position.z - 0.5f);
+                transform.position.y - 0.1f, transform.position.z - 0.5f) ||
+            _world.CheckPositionOnGround
+            (transform.position.x - 0.5f,
+                transform.position.y - 0.1f, transform.position.z + 0.5f) ||
+            _world.CheckPositionOnGround
+            (transform.position.x + 0.5f,
+                transform.position.y - 0.1f, transform.position.z + 0.5f) ||
+            _world.CheckPositionOnGround
+            (transform.position.x + 0.5f,
+                transform.position.y - 0.1f, transform.position.z - 0.5f);
 
         private PlayerInputSystem.PlayerActions _playerActions;
         private Rigidbody _rigidbody;
@@ -71,7 +73,7 @@ namespace MilkSpun.RTSDriver.Main
         private void Move()
         {
             var targetPos = transform.position +
-                            new Vector3(_movement.x, 0f, _movement.y) * (Time.deltaTime * walkSpeed);
+                new Vector3(_movement.x, 0f, _movement.y) * (Time.deltaTime * walkSpeed);
             transform.LookAt(targetPos);
             _rigidbody.MovePosition(targetPos);
         }
